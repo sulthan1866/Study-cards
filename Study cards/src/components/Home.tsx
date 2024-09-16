@@ -39,7 +39,7 @@ function Home(){
   }
 
   useEffect(() => {
-    fetch(`http://localhost:8080/cards/${id}`)
+    fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards/${id}`)
       .then((response) => {
         if (!response.ok) throw response.statusText;
         else {
@@ -57,7 +57,7 @@ function Home(){
   }, [id]);
   
   useEffect(() => {
-    fetch(`http://localhost:8080/cards`)
+    fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards`)
       .then((response) => {
         if (!response.ok) throw response.statusText;
         else {
