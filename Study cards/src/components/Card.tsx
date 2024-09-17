@@ -7,23 +7,26 @@ interface Props {
   options: ['','','',''];
   correct_option: string;
   value: boolean;
+  tester:boolean
+  length:number
   onClick: () => void;
 }
 
-function Card({question,answer,value,onClick,qno,options,correct_option,}: Props) {
+function Card({question,answer,value,onClick,qno,options,correct_option,tester,length}: Props) {
   
   const [mess, setMess] = useState<string>("");
   const [option, setOption] = useState<string>("");
   const [correction, setCorrection] = useState<string>("");
+  const [marks,setMarks] = useState<number>(0);
 
   const changeOption = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOption(event.target.value);
-    console.log(option);
+    
   };
 
   const nocurser: React.CSSProperties = {
     cursor: "default",
-    height: 400,
+    height: 450,
 
     width: 400,
   };
@@ -37,10 +40,27 @@ function Card({question,answer,value,onClick,qno,options,correct_option,}: Props
   const check = () => {
     if (option === correct_option) {
       setCorrection("CORRECT ANSWER");
+      if(tester && !value) setMarks(marks+1)
     } else {
       setCorrection("WRONG ANSWER");
     }
   };
+
+  
+
+  const showResult = ()=>{
+    const messElement=document.getElementById("mess");
+    if(qno>=length && tester){
+      if(length===marks){messElement?.classList.add("text-success") ;setMess(`${marks+" / "+length} Excellent Great job :)`)}
+        else if(length/marks<2){messElement?.classList.add("text-primary");setMess(`${marks+" / "+length} Good job !`)}
+        else if(length/marks<2.5){messElement?.classList.add("text-primary");setMess(`${marks+" / "+length} Cool !`)}
+      
+      else {messElement?.classList.add("text-danger");setMess(`${marks+" / "+length} Prepare well next time !!!!`);}
+      
+      
+
+    }
+  }
 
   return (
     <div
@@ -50,24 +70,26 @@ function Card({question,answer,value,onClick,qno,options,correct_option,}: Props
         onClick();
         setMess("");
         check();
+        showResult();
       }}
     >
-      <div className="card-body" id="card">
+      <div className="card-body text-light" id="card">
         <h3>
-          <strong className="text-light card-title">
+          <strong className=" card-title">
             {value ? correction : `Question: ${qno}`}
           </strong>
         </h3>
-        <p className="text-light card-text">
+        <p className="card-text">
           {value ? `correct option :"${correct_option}"` : question}
         </p>
         {value ? (
-          <p className="text-light">{`Explanation : ${answer} `}</p>
+          <p className="">{`Explanation : ${answer} `}</p>
         ) : (
-          <ul className="text-light small">
+          <ul className="small">
             <li>
               <label className="m-2">
                 <input
+                
                   type="radio"
                   value="A"
                   name="option"
@@ -111,8 +133,8 @@ function Card({question,answer,value,onClick,qno,options,correct_option,}: Props
             </li>
           </ul>
         )}
-        <p id="mess" className="text-light">
-          {mess}
+        <p id="mess">
+          {(tester)?(qno==1&&!value)?mess:(qno>=length)?mess:` marks = ${marks}`:mess}
         </p>
       </div>
     </div>

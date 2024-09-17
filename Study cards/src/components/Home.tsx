@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 
+interface Props {
+  tester: boolean;
+}
+
 interface Cards {
   id: number;
   qtype: string;
@@ -10,7 +14,7 @@ interface Cards {
   correctOption: string;
 }
 
-function Home(){
+function Home({ tester }: Props) {
   const [id, setId] = useState<number>(1);
   const [data, setData] = useState<Cards | null>(null);
   const [datas, setDatas] = useState<Cards[]>([]);
@@ -18,28 +22,35 @@ function Home(){
   const [error, setError] = useState<string | null>(null);
   const [value, setValue] = useState<boolean>(false);
 
+  const preButton = document.getElementById("pre");
+  const nextButton = document.getElementById("next");
+
   const onClick = () => {
     if (value) {
-      setValue(false);
+      if (!tester) setValue(false);
     } else {
       setValue(true);
     }
   };
 
+  if (tester) {
+    preButton?.setAttribute("disabled", "");
+  }
+
   if (id <= 1) {
-    document.getElementById("pre")?.setAttribute("disabled", "");
-  } else {
-    document.getElementById("pre")?.removeAttribute("disabled");
+    preButton?.setAttribute("disabled", "");
+  } else if (!tester) {
+    preButton?.removeAttribute("disabled");
   }
 
   if (id >= datas.length) {
-    document.getElementById("next")?.setAttribute("disabled", "");
+    nextButton?.setAttribute("disabled", "");
   } else {
-    document.getElementById("next")?.removeAttribute("disabled");
+    nextButton?.removeAttribute("disabled");
   }
 
   useEffect(() => {
-    fetch(`http://localhost:8080/cards/${id}`)
+    fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards/${id}`)
       .then((response) => {
         if (!response.ok) throw response.statusText;
         else {
@@ -55,9 +66,9 @@ function Home(){
         setLoading(false);
       });
   }, [id]);
-  
+
   useEffect(() => {
-    fetch(`http://localhost:8080/cards`)
+    fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards`)
       .then((response) => {
         if (!response.ok) throw response.statusText;
         else {
@@ -87,7 +98,7 @@ function Home(){
 
           <div className="row">
             <div className="d-flex justify-content-center">
-              <div className="m-1 mb-5 mt-5">
+              <div id="card" className="m-1 mb-5 mt-5">
                 <Card
                   qno={data.id}
                   question={data.question}
@@ -95,6 +106,8 @@ function Home(){
                   options={data.options}
                   correct_option={data.correctOption}
                   value={value}
+                  tester={tester}
+                  length={datas.length}
                   onClick={onClick}
                 ></Card>
               </div>
@@ -120,8 +133,10 @@ function Home(){
                 id="next"
                 className="btn btn-primary"
                 onClick={() => {
-                  setId(id + 1);
-                  setValue(false);
+                  if (!(tester && !value)) {
+                    setId(id + 1);
+                    setValue(false);
+                  }
                 }}
               >
                 next
@@ -132,6 +147,6 @@ function Home(){
       )}
     </div>
   );
-};
+}
 
 export default Home;
