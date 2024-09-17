@@ -12,7 +12,7 @@ interface Props {
   onClick: () => void;
 }
 
-function Card({question,answer,value,onClick,qno,options,correct_option,tester}: Props) {
+function Card({question,answer,value,onClick,qno,options,correct_option,tester,length}: Props) {
   
   const [mess, setMess] = useState<string>("");
   const [option, setOption] = useState<string>("");
@@ -26,7 +26,7 @@ function Card({question,answer,value,onClick,qno,options,correct_option,tester}:
 
   const nocurser: React.CSSProperties = {
     cursor: "default",
-    height: 400,
+    height: 450,
 
     width: 400,
   };
@@ -49,11 +49,16 @@ function Card({question,answer,value,onClick,qno,options,correct_option,tester}:
   
 
   const showResult = ()=>{
-    if(qno>=length){
-      if(length/marks>3)setMess("Prepare well next time !!!!");
-      else if(length/marks>=2)setMess("Mid")
-      else if(length===marks)setMess("Excellent Great job :)")
-      else setMess("Good job")
+    const messElement=document.getElementById("mess");
+    if(qno>=length && tester){
+      if(length===marks){messElement?.classList.add("text-success") ;setMess(`${marks+" / "+length} Excellent Great job :)`)}
+        else if(length/marks<2){messElement?.classList.add("text-primary");setMess(`${marks+" / "+length} Good job !`)}
+        else if(length/marks<2.5){messElement?.classList.add("text-primary");setMess(`${marks+" / "+length} Cool !`)}
+      
+      else {messElement?.classList.add("text-danger");setMess(`${marks+" / "+length} Prepare well next time !!!!`);}
+      
+      
+
     }
   }
 
@@ -128,7 +133,7 @@ function Card({question,answer,value,onClick,qno,options,correct_option,tester}:
             </li>
           </ul>
         )}
-        <p>
+        <p id="mess">
           {(tester)?(qno==1&&!value)?mess:(qno>=length)?mess:` marks = ${marks}`:mess}
         </p>
       </div>
