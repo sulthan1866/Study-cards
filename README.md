@@ -14,6 +14,7 @@ Play Mode is like a test mode where users' performance is evaluated.
 
 
 **Key rules:**(in Play mode)
+
 Once a user views the answer to a question, they cannot change their choice.
 Navigation is restricted: users cannot return to previous questions.
 Marks are calculated based on number of correct answers.
