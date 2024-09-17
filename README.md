@@ -3,10 +3,12 @@ StudyCards is a web application with two modes: Study Mode and Play Mode.
 it has mcq based questions
 
 **Features**
+
 **_1. Study Mode_**
 Users can browse through flashcards containing questions and answers.
 This mode is intended for learning and review.
 You can freely navigate through the cards, viewing the questions and corresponding answers.
+
 **_2. Play Mode_**
 Play Mode is like a test mode where users' performance is evaluated.
 
