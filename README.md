@@ -49,7 +49,8 @@ The ```data.sql``` file is executed every time the backend is restarted, making 
 <h4>Adding Your Own Questions</h4>
 
 sers can add their own questions to the database via a web path. The path is:
-main_link/30roundsencodedpassword
+```main_link/30roundsencodedpassword```
+
 For example in localhost:5127, ```localhost:5127/30roundsencodedpassword```.
 
 If using the H2 in-memory database, no further configuration is needed to add new questions. However, if you're using another database, like PostgreSQL, you’ll need to configure the auto-increment functionality for the id column.
