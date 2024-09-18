@@ -55,7 +55,7 @@ function Card({question,answer,value,onClick,qno,options,correct_option,tester,l
         else if(length/marks<2){messElement?.classList.add("text-primary");setMess(`${marks+" / "+length} Good job !`)}
         else if(length/marks<2.5){messElement?.classList.add("text-primary");setMess(`${marks+" / "+length} Cool !`)}
       
-      else {messElement?.classList.add("text-danger");setMess(`${marks+" / "+length} Prepare well next time !!!!`);}
+      else {messElement?.classList.add("text-danger");setMess(`${marks+" / "+length} Prepare well next time !!!`);}
       
       
 

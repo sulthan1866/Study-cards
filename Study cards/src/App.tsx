@@ -13,7 +13,7 @@ const App :React.FC=()=> {
           <Route path='/play' element={<Home tester={true}></Home>}></Route>
           <Route path='/study' element={<Home tester={false}></Home>}></Route>
 
-          <Route path='/add' element={<Add/>}>
+          <Route path='/30roundsencodedpassword' element={<Add/>}>
 
           </Route>
         </Routes>
