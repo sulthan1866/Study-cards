@@ -36,12 +36,34 @@ Database: H2 in-memory database (for development)
 
 **Database Configuration:**
 
-By default, the backend uses an H2 in-memory database that runs with Spring Boot. A sample query is executed on startup via the data.sql file, which ensures that the database is populated with default data every time the backend is restarted.
+By default, the backend runs with an H2 in-memory database, which is ideal for development. The ```data.sql``` file, located in the ```src/main/resources``` directory, executes a sample query at startup, ensuring that the database is pre-populated every time the backend restarts.
 
-If you want to connect to your own database, you can configure it in the application.properties and add dependency in pom.xml if your Data base system is other than postgres(which is already added in dependency) file located in the src/main/resources directory.
+If you'd like to connect the app to your own database (for example, PostgreSQL or any other database), you can modify the ```application.properties``` file and update the dependencies in ```pom.xml``` (PostgreSQL is already included).
 
 
 <h2>H2 In-Memory Database (Default):</h2>
 The project uses an H2 database during development for simplicity.
 The database schema and initial data are defined in the data.sql file.
-The data.sql file is executed every time the backend is restarted, making it ideal for development and testing.
+The ```data.sql``` file is executed every time the backend is restarted, making it ideal for development and testing.
+
+<h4>Adding Your Own Questions</h4>
+
+sers can add their own questions to the database via a web path. The path is:
+main_link/30roundsencodedpassword
+For example in localhost:5127, ```localhost:5127/30roundsencodedpassword```.
+
+If using the H2 in-memory database, no further configuration is needed to add new questions. However, if you're using another database, like PostgreSQL, you’ll need to configure the auto-increment functionality for the id column.
+
+<h2>PostgreSQL Auto-Increment Setup Example</h2>
+
+```sql
+-- Step 1: Create a sequence
+CREATE SEQUENCE cards_id_seq;
+
+-- Step 2: Set the default value of the 'id' column to use the sequence
+ALTER TABLE cards 
+ALTER COLUMN id SET DEFAULT nextval('cards_id_seq'); 
+
+-- Step 3: Synchronize the sequence with the existing data
+SELECT setval('cards_id_seq', (SELECT COALESCE(MAX(id), 1) FROM cards)); 
+```
