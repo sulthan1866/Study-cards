@@ -51,7 +51,7 @@ public class Cards {
     	return this.correctOption;
     }
     
-    public void setCorrectOption(int index) {
+    public void setOption(int index) {
     	this.correctOption  = this.options[index];
     	
     }

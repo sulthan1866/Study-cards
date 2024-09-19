@@ -26,17 +26,20 @@ public class Service {
 		
 		Cards card= repo.findById(id).orElse(null);
 		String[] op = card.getOptions();
-		List<String> opList = new ArrayList<>(Arrays.asList(op));
+		List<String> opList =Arrays.asList(op);
 		Collections.shuffle(opList);
-		card.setOptions((String[])opList.toArray());
+		for(int i=0;i<4;i++)
+			op[i]=opList.get(i);
+
+		card.setOptions(op);
 
 		return card;
 	}
 
 
 	public Cards addCard(Cards card) {
-		// TODO Auto-generated method stub
-		card.setCorrectOption(card.getCorrectOption().charAt(0)-'A');
+		int index = card.getCorrectOption().charAt(0) - 'A';
+		card.setOption(index);
 		return repo.save(card);
 	}
 }
