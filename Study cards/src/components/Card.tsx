@@ -91,7 +91,7 @@ function Card({question,answer,value,onClick,qno,options,correct_option,tester,l
                 <input
                 
                   type="radio"
-                  value="A"
+                  value={options[0]}
                   name="option"
                   onChange={changeOption}
                 />
@@ -102,7 +102,7 @@ function Card({question,answer,value,onClick,qno,options,correct_option,tester,l
               <label className="m-2">
                 <input
                   type="radio"
-                  value="B"
+                  value={options[1]}
                   name="option"
                   onChange={changeOption}
                 />
@@ -113,7 +113,7 @@ function Card({question,answer,value,onClick,qno,options,correct_option,tester,l
               <label className="m-2">
                 <input
                   type="radio"
-                  value="C"
+                  value={options[2]}
                   name="option"
                   onChange={changeOption}
                 />
@@ -124,7 +124,7 @@ function Card({question,answer,value,onClick,qno,options,correct_option,tester,l
               <label className="m-2">
                 <input
                   type="radio"
-                  value="D"
+                  value={options[3]}
                   name="option"
                   onChange={changeOption}
                 />
