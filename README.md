@@ -11,7 +11,6 @@ StudyCards is a web application designed to help users learn and test their know
 
 ### 2. Play Mode
 - Test mode where users' performance is evaluated
-- Options for each question are shuffled every time the question is viewed
 
 #### Key Rules (in Play Mode):
 - Once a user views the answer to a question, they cannot change their choice
