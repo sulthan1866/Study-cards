@@ -50,5 +50,15 @@ public class Cards {
     public String getCorrectOption() {
     	return this.correctOption;
     }
+    
+    public void setOption(int index) {
+    	this.correctOption  = this.options[index];
+    	
+    }
+    public void setOptions(String[] options) {
+    	this.options  = options;
+    	
+    }
+    
 
 }

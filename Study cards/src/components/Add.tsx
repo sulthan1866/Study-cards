@@ -17,7 +17,7 @@ const Add: React.FC = () => {
     const Ecorrect_option = document.getElementById("cop") as HTMLInputElement;
     const correct_option = Ecorrect_option.value;
     try {
-      fetch(`http://localhost:8080/cards/add`, {
+      fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards/add`, {
         method: "POST",
 
         headers: {
