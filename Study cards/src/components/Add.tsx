@@ -1,4 +1,17 @@
+import { useState } from "react";
+
 const Add: React.FC = () => {
+
+  const [typeLength, setTypeLength] = useState(0);
+  const [questionLength, setQuestionLength] = useState(0);
+  const [answerLength, setAnswerLength] = useState(0);
+  const [option1Length, setOption1Length] = useState(0);
+  const [option2Length, setOption2Length] = useState(0);
+  const [option3Length, setOption3Length] = useState(0);
+  const [option4Length, setOption4Length] = useState(0);
+  const [correctOptionLength, setCorrectOptionLength] = useState(0);
+
+  
   const handleSubmit = () => {
     const Etype = document.getElementById("type") as HTMLInputElement;
     const type = Etype.value;
@@ -38,113 +51,137 @@ const Add: React.FC = () => {
   };
 
   return (
-    <div className="container mt-4">
-  <div className="row justify-content-center">
-    <div className="col-lg-6 col-md-8 col-sm-10">
-      <form onSubmit={(e)=>{e.preventDefault(); handleSubmit();}}>
-        <div className="mb-3">
-          <label htmlFor="type" className="form-label">Type</label>
-          <input
-            type="text"
-            className="form-control"
-            id="type"
-            placeholder="Enter type"
-            required
-            autoFocus
-          />
-        </div>
+   <div className="container mt-4">
+      <div className="row justify-content-center">
+        <div className="col-lg-6 col-md-8 col-sm-10">
+          <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+            
+            <div className="mb-3">
+              <label htmlFor="type" className="form-label">Type</label>
+              <input
+                type="text"
+                className="form-control"
+                id="type"
+                placeholder="Enter type"
+                required
+                autoFocus
+                maxLength={25}
+                onInput={(e) => setTypeLength(e.target.value.length)}
+              />
+              <small>{typeLength}/25 characters</small>
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="qn" className="form-label">Question</label>
-          <input
-            type="text"
-            className="form-control"
-            id="qn"
-            placeholder="Enter question"
-            required
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="qn" className="form-label">Question</label>
+              <textarea
+              rows={3}
+                type="text"
+                className="form-control"
+                id="qn"
+                placeholder="Enter question"
+                required
+                maxLength={150}
+                onInput={(e) => setQuestionLength(e.target.value.length)}
+              />
+              <small>{questionLength}/150 characters</small>
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="ans" className="form-label">Answer</label>
-          <input
-            type="text"
-            className="form-control"
-            id="ans"
-            placeholder="Enter answer"
-            required
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="ans" className="form-label">Explanation</label>
+              <textarea
+                rows={5}
+                className="form-control"
+                id="ans"
+                placeholder="Enter Explanation"
+                required
+                maxLength={425}
+                onInput={(e) => setAnswerLength(e.target.value.length)}
+              />
+              <small>{answerLength}/425 characters</small>
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="op1" className="form-label">Option 1</label>
-          <input
-            type="text"
-            className="form-control"
-            id="op1"
-            placeholder="Option 1"
-            required
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="op1" className="form-label">Option 1</label>
+              <input
+                type="text"
+                className="form-control"
+                id="op1"
+                placeholder="Option 1"
+                required
+                maxLength={75}
+                onInput={(e) => setOption1Length(e.target.value.length)}
+              />
+              <small>{option1Length}/75 characters</small>
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="op2" className="form-label">Option 2</label>
-          <input
-            type="text"
-            className="form-control"
-            id="op2"
-            placeholder="Option 2"
-            required
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="op2" className="form-label">Option 2</label>
+              <input
+                type="text"
+                className="form-control"
+                id="op2"
+                placeholder="Option 2"
+                required
+                maxLength={75}
+                onInput={(e) => setOption2Length(e.target.value.length)}
+              />
+              <small>{option2Length}/75 characters</small>
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="op3" className="form-label">Option 3</label>
-          <input
-            type="text"
-            className="form-control"
-            id="op3"
-            placeholder="Option 3"
-            required
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="op3" className="form-label">Option 3</label>
+              <input
+                type="text"
+                className="form-control"
+                id="op3"
+                placeholder="Option 3"
+                required
+                maxLength={75}
+                onInput={(e) => setOption3Length(e.target.value.length)}
+              />
+              <small>{option3Length}/75 characters</small>
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="op4" className="form-label">Option 4</label>
-          <input
-            type="text"
-            className="form-control"
-            id="op4"
-            placeholder="Option 4"
-            required
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="op4" className="form-label">Option 4</label>
+              <input
+                type="text"
+                className="form-control"
+                id="op4"
+                placeholder="Option 4"
+                required
+                maxLength={75}
+                onInput={(e) => setOption4Length(e.target.value.length)}
+              />
+              <small>{option4Length}/75 characters</small>
+            </div>
 
-        <div className="mb-3">
-          <label htmlFor="cop" className="form-label">Correct Option (A/B/C/D)</label>
-          <input
-            type="text"
-            className="form-control"
-            id="cop"
-            placeholder="Correct option (A/B/C/D)"
-            pattern="A|[B-D]"
-            required
-          />
-        </div>
+            <div className="mb-3">
+              <label htmlFor="cop" className="form-label">Correct Option (A/B/C/D)</label>
+              <input
+                type="text"
+                className="form-control"
+                id="cop"
+                placeholder="Correct option (A/B/C/D)"
+                pattern="A|[B-D]"
+                maxLength={1}
+                required
+                onInput={(e) => setCorrectOptionLength(e.target.value.length)}
+              />
+              <small>{correctOptionLength}/1 characters</small>
+            </div>
 
-        <div className="text-center">
-          <input
-            type="submit"
-            className="btn btn-primary"
-            value="Submit"
-           
-          />
+            <div className="text-center">
+              <input
+                type="submit"
+                className="btn btn-primary"
+                value="Submit"
+              />
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
-
   );
 };
 
