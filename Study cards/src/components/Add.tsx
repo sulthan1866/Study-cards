@@ -2,14 +2,14 @@ import { useState } from "react";
 
 const Add: React.FC = () => {
 
-  const [typeLength, setTypeLength] = useState(0);
-  const [questionLength, setQuestionLength] = useState(0);
-  const [answerLength, setAnswerLength] = useState(0);
-  const [option1Length, setOption1Length] = useState(0);
-  const [option2Length, setOption2Length] = useState(0);
-  const [option3Length, setOption3Length] = useState(0);
-  const [option4Length, setOption4Length] = useState(0);
-  const [correctOptionLength, setCorrectOptionLength] = useState(0);
+  const [typeLength, setTypeLength] = useState<number>(0);
+  const [questionLength, setQuestionLength] = useState<number>(0);
+  const [answerLength, setAnswerLength] = useState<number>(0);
+  const [option1Length, setOption1Length] = useState<number>(0);
+  const [option2Length, setOption2Length] = useState<number>(0);
+  const [option3Length, setOption3Length] = useState<number>(0);
+  const [option4Length, setOption4Length] = useState<number>(0);
+  const [correctOptionLength, setCorrectOptionLength] = useState<number>(0);
 
   
   const handleSubmit = () => {
@@ -66,7 +66,7 @@ const Add: React.FC = () => {
                 required
                 autoFocus
                 maxLength={25}
-                onInput={(e) => setTypeLength(e.target.value.length)}
+                onInput={(e) => setTypeLength(e.currentTarget.value.length)}
               />
               <small>{typeLength}/25 characters</small>
             </div>
@@ -75,13 +75,12 @@ const Add: React.FC = () => {
               <label htmlFor="qn" className="form-label">Question</label>
               <textarea
               rows={3}
-                type="text"
                 className="form-control"
                 id="qn"
                 placeholder="Enter question"
                 required
                 maxLength={150}
-                onInput={(e) => setQuestionLength(e.target.value.length)}
+                onInput={(e) => setQuestionLength(e.currentTarget.value.length)}
               />
               <small>{questionLength}/150 characters</small>
             </div>
@@ -95,7 +94,7 @@ const Add: React.FC = () => {
                 placeholder="Enter Explanation"
                 required
                 maxLength={425}
-                onInput={(e) => setAnswerLength(e.target.value.length)}
+                onInput={(e) => setAnswerLength(e.currentTarget.value.length)}
               />
               <small>{answerLength}/425 characters</small>
             </div>
@@ -109,7 +108,7 @@ const Add: React.FC = () => {
                 placeholder="Option 1"
                 required
                 maxLength={75}
-                onInput={(e) => setOption1Length(e.target.value.length)}
+                onInput={(e) => setOption1Length(e.currentTarget.value.length)}
               />
               <small>{option1Length}/75 characters</small>
             </div>
@@ -123,7 +122,7 @@ const Add: React.FC = () => {
                 placeholder="Option 2"
                 required
                 maxLength={75}
-                onInput={(e) => setOption2Length(e.target.value.length)}
+                onInput={(e) => setOption2Length(e.currentTarget.value.length)}
               />
               <small>{option2Length}/75 characters</small>
             </div>
@@ -137,7 +136,7 @@ const Add: React.FC = () => {
                 placeholder="Option 3"
                 required
                 maxLength={75}
-                onInput={(e) => setOption3Length(e.target.value.length)}
+                onInput={(e) => setOption3Length(e.currentTarget.value.length)}
               />
               <small>{option3Length}/75 characters</small>
             </div>
@@ -151,7 +150,7 @@ const Add: React.FC = () => {
                 placeholder="Option 4"
                 required
                 maxLength={75}
-                onInput={(e) => setOption4Length(e.target.value.length)}
+                onInput={(e) => setOption4Length(e.currentTarget.value.length)}
               />
               <small>{option4Length}/75 characters</small>
             </div>
@@ -166,7 +165,7 @@ const Add: React.FC = () => {
                 pattern="A|[B-D]"
                 maxLength={1}
                 required
-                onInput={(e) => setCorrectOptionLength(e.target.value.length)}
+                onInput={(e) => setCorrectOptionLength(e.currentTarget.value.length)}
               />
               <small>{correctOptionLength}/1 characters</small>
             </div>
