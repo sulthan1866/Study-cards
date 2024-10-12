@@ -38,10 +38,21 @@ function Chooser() {
                 </Link>
               </div>
             </div>
+            <div className="row">
+              <div className="col d-flex justify-content-center">
+                <Link to={`/picker`}>
+                  <button className="btn btn-primary">Picker</button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
         <div className="alert alert-warning">
-          {(hover!=null)?hover == "play" ? "Test: mark will be counted and options can't be changed once answer is viewed" : "Study: No restrictions but still can choose answer and check if its right":""}
+          {hover != null
+            ? hover == "play"
+              ? "Test: mark will be counted and options can't be changed once answer is viewed"
+              : "Study: No restrictions but still can choose answer and check if its right"
+            : ""}
         </div>
       </div>
     </>

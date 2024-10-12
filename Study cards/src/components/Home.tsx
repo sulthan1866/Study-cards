@@ -87,7 +87,7 @@ function Home({ tester }: Props) {
 
   if (loading) return <h1>loading</h1>;
 
-  if (error) return <h1>error</h1>;
+  if (error) return <h1>{error}</h1>;
   return (
     <div className="container col-lg-4 col-sm-8 col-9">
       {data && (
