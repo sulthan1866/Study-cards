@@ -4,7 +4,7 @@ interface Props {
   qno: number;
   question: string;
   answer: string;
-  options: ["", "", "", ""];
+  options: [string, string, string, string];
   correct_option: string;
   value: boolean;
   tester: boolean;

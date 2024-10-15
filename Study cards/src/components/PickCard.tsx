@@ -8,6 +8,9 @@ interface Props {
   correct_option: string;
   setMarks: (value: React.SetStateAction<number>) => void;
   marks: number;
+  setAtterning: (value: React.SetStateAction<boolean>) => void;
+  atterning: boolean;
+  parentID: string;
 }
 
 function PickCard({
@@ -18,6 +21,9 @@ function PickCard({
   correct_option,
   setMarks,
   marks,
+  setAtterning,
+  atterning,
+  parentID,
 }: Props) {
   const [mess, setMess] = useState<string>("");
   const [option, setOption] = useState<string>("");
@@ -25,23 +31,28 @@ function PickCard({
   const [value, setValue] = useState<boolean>(false);
   const [selected, setSelected] = useState<boolean>(false);
 
+  const cardId = "card" + qno.toString();
+  const cardEle = document.getElementById(cardId) as Node;
+
   const changeOption = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOption(event.target.value);
+    event.stopPropagation();
   };
 
-  const nocurser: React.CSSProperties = {
+  const fullCard: React.CSSProperties = {
     cursor: "default",
     height: selected ? 450 : 400,
     width: selected ? 400 : "auto",
+    position: selected ? "absolute" : "static",
   };
 
   const flip: React.CSSProperties = {
     transition: "transform 0.6s",
-    transform: value ? "rotateY(360deg)" : "none",
+    transform: value ? "rotateY(180deg)" : "none",
   };
 
   const unflip: React.CSSProperties = {
-    transform: value ? "rotateY(360deg)" : "none",
+    transform: value ? "rotateY(180deg)" : "none",
   };
 
   document.getElementsByName("option").forEach((o) => {
@@ -61,22 +72,28 @@ function PickCard({
 
   return (
     <div
-      id={"card" + qno}
-      style={{ ...nocurser, ...flip }}
-      className={"card bg-dark p-lg-3 p-sm-1 p-1 card-deck"}
-      onMouseOver={() => setSelected(true)}
-      onMouseLeave={() => setSelected(false)}
+      id={cardId}
+      style={{ ...fullCard, ...flip }}
+      className={"card bg-dark p-lg-3 p-sm-1 p-1 card-deck border-light"}
+      onClick={() => {
+        if (!atterning) {
+          setSelected(true);
+          setAtterning(true);
+        }
+      }}
       onDoubleClick={() => {
-        setValue(!value);
-        setMess("");
-        check();
+        if (atterning) {
+          setValue(true);
+          setMess("");
+          check();
+        }
       }}
     >
       {selected && (
         <div className="card-body text-light" id="card" style={unflip}>
           <h3>
             <strong className=" card-title">
-              {value ? correction : `Question: ${qno}`}
+              {value ? correction : `Question:`}
             </strong>
           </h3>
           <p className="card-text">
@@ -133,6 +150,23 @@ function PickCard({
             </ul>
           )}
           <p id="mess">{mess}</p>
+          {value && (
+            <div className="justify-content-end row">
+              <button
+                onClick={() => {
+                  if (selected) {
+                    document.getElementById(parentID)?.removeChild(cardEle);
+                    setSelected(false);
+                    setAtterning(false);
+                  }
+                }}
+                className="col-2 btn btn-secondary"
+              >
+                Next
+              </button>
+              <div className="col-1"></div>
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -1,0 +1,8 @@
+@keyframes lodin {
+    0%,100%{
+        background-color:rgb(92, 91, 91)
+    }
+    50%{
+        background-color:darkgrey
+    }
+}
