@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import Message from "./Error/loading/Message";
 
 interface Props {
   tester: boolean;
@@ -52,8 +53,10 @@ function Home({ tester }: Props) {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards/${id}`)
       .then((response) => {
-        if (!response.ok) throw response.statusText;
-        else {
+        if (!response.ok) {
+          setError(response.statusText);
+          throw response.statusText;
+        } else {
           return response.json();
         }
       })
@@ -70,8 +73,10 @@ function Home({ tester }: Props) {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards`)
       .then((response) => {
-        if (!response.ok) throw response.statusText;
-        else {
+        if (!response.ok) {
+          setError(response.statusText);
+          throw response.statusText;
+        } else {
           return response.json();
         }
       })
@@ -80,14 +85,15 @@ function Home({ tester }: Props) {
         setLoading(false);
       })
       .catch((error) => {
-        setError(error);
         setLoading(false);
+        setError(error);
       });
   }, []);
 
-  if (loading) return <h1>loading</h1>;
+  if (loading) return <Message>Loading</Message>;
 
-  if (error) return <h1>error</h1>;
+  if (error != null) return <Message>{error + ""}</Message>;
+
   return (
     <div className="container col-lg-4 col-sm-8 col-9">
       {data && (

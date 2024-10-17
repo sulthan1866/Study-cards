@@ -26,6 +26,7 @@ function Chooser() {
                   </button>
                 </Link>
               </div>
+
               <div className="col d-flex justify-content-center">
                 <Link to={`/study`}>
                   <button
@@ -37,11 +38,29 @@ function Chooser() {
                   </button>
                 </Link>
               </div>
+
+              <div className="col d-flex justify-content-center">
+                <Link to={`/picker`}>
+                  <button
+                    onMouseEnter={() => setHover("pick")}
+                    onMouseLeave={() => setHover(null)}
+                    className="btn btn-primary"
+                  >
+                    Picker
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
         <div className="alert alert-warning">
-          {(hover!=null)?hover == "play" ? "Test: mark will be counted and options can't be changed once answer is viewed" : "Study: No restrictions but still can choose answer and check if its right":""}
+          {hover != null
+            ? hover == "play"
+              ? "Test: mark will be counted and options can't be changed once answer is viewed"
+              : hover == "study"
+              ? "Study: No restrictions but still can choose answer and check if its right"
+              : "Picker: cards can be selected at random and answered"
+            : ""}
         </div>
       </div>
     </>
