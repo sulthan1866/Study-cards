@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import {Toast} from "bootstrap";
 
 interface Props {
   qno: number;
+  qType:string,
   question: string;
   answer: string;
   options: ["", "", "", ""];
@@ -10,10 +12,13 @@ interface Props {
   marks: number;
   setAtterning: (value: React.SetStateAction<boolean>) => void;
   atterning: boolean;
+  setQAttended: (value: React.SetStateAction<number>) => void;
+  qAttended: number;
   parentID: string;
 }
 
 function PickCard({
+  qType,
   question,
   answer,
   qno,
@@ -23,6 +28,8 @@ function PickCard({
   marks,
   setAtterning,
   atterning,
+  setQAttended,
+  qAttended,
   parentID,
 }: Props) {
   const [mess, setMess] = useState<string>("");
@@ -74,15 +81,23 @@ function PickCard({
     <div
       id={cardId}
       style={{ ...fullCard, ...flip }}
-      className={"card bg-dark p-lg-3 p-sm-1 p-1 card-deck border-light"}
+      className={
+        "card bg-dark p-lg-3 p-sm-1 p-1 card-deck border-5 border-secondary"
+      }
       onClick={() => {
         if (!atterning) {
           setSelected(true);
           setAtterning(true);
+        }else if(!selected){
+            const myToast = new Toast(document.getElementById('toast') as Element, {
+              delay: 5000
+            });
+            myToast.show();
+          
         }
       }}
       onDoubleClick={() => {
-        if (atterning) {
+        if (selected && atterning) {
           setValue(true);
           setMess("");
           check();
@@ -93,7 +108,7 @@ function PickCard({
         <div className="card-body text-light" id="card" style={unflip}>
           <h3>
             <strong className=" card-title">
-              {value ? correction : `Question:`}
+              {value ? correction : qType.toUpperCase()}
             </strong>
           </h3>
           <p className="card-text">
@@ -158,9 +173,10 @@ function PickCard({
                     document.getElementById(parentID)?.removeChild(cardEle);
                     setSelected(false);
                     setAtterning(false);
+                    setQAttended(qAttended + 1);
                   }
                 }}
-                className="col-2 btn btn-secondary"
+                className="col-3 btn btn-secondary"
               >
                 Next
               </button>

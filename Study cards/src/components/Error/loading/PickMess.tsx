@@ -6,7 +6,7 @@ interface Props {
 }
 
 function PickMess({ children }: Props) {
-  const datas = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+  const datas = ["", "", "", "", "", "", "", "", "", "", "", ""];
 
   const loading: React.CSSProperties = {
     animation: "lodin 2s infinite",
@@ -14,7 +14,7 @@ function PickMess({ children }: Props) {
 
   return (
     <div className="container" style={loading}>
-      <h1 className="p-2 card mt-3 ps-3 sticky-top bg-dark text-light">
+      <h1 className="p-2 card mt-3 ps-3 sticky-top bg-dark text-light border-5 border-light">
         {children}
       </h1>
       <div className="row">
@@ -22,6 +22,7 @@ function PickMess({ children }: Props) {
           <div className="col-lg-3 col-md-4 col-sm-6 col-6 my-2">
             <PickCard
               qno={0}
+              qType={""}
               question={""}
               answer={""}
               options={["", "", "", ""]}
@@ -30,6 +31,8 @@ function PickMess({ children }: Props) {
               marks={0}
               setAtterning={() => Node}
               atterning={false}
+              setQAttended={() => Node}
+              qAttended={-1}
               parentID={""}
             />
           </div>

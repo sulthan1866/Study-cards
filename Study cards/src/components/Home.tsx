@@ -84,14 +84,15 @@ function Home({ tester }: Props) {
         setDatas(datas);
         setLoading(false);
       })
-      .catch(() => {
+      .catch((error) => {
         setLoading(false);
+        setError(error);
       });
   }, []);
 
   if (loading) return <Message>Loading</Message>;
 
-  if (error != null) return <Message>{error}</Message>;
+  if (error != null) return <Message>{error + ""}</Message>;
 
   return (
     <div className="container col-lg-4 col-sm-8 col-9">
