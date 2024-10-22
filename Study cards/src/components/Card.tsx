@@ -41,11 +41,11 @@ function Card({
 
   const flip: React.CSSProperties = {
     transition: "transform 0.6s",
-    transform: value ? "rotateY(360deg)" : "none",
+    transform: value ? "rotateY(180deg)" : "none",
   };
 
   const unflip: React.CSSProperties = {
-    transform: value ? "rotateY(360deg)" : "none",
+    transform: value ? "rotateY(180deg)" : "none",
   };
 
   document.getElementsByName("option").forEach((o) => {

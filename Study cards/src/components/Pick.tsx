@@ -20,7 +20,7 @@ function Pick() {
   const [qAttened, setQAttended] = useState<number>(0);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards`)
+    fetch(`${import.meta.env.VITE_CARD_DETAILS}/picker-cards`)
       .then((response) => {
         if (!response.ok) {
           setError(response.statusText);
@@ -35,7 +35,7 @@ function Pick() {
         setLoading(false);
         setError(error);
       });
-  });
+  },[]);
 
   if (error != null) return <PickMess>{error + ""}</PickMess>;
   if (loading) return <PickMess>Loading</PickMess>;
