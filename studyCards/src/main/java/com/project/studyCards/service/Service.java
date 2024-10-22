@@ -4,10 +4,10 @@ import com.project.studyCards.model.Cards;
 import com.project.studyCards.repository.Repo;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @org.springframework.stereotype.Service
 public class Service {
@@ -20,6 +20,12 @@ public class Service {
        return repo.findAll();
     }
 
+    public List<Cards> getShuffledCards() {
+		// TODO Auto-generated method stub
+		List<Cards> cards= this.getCards();
+		Collections.shuffle(cards,new Random());
+		return cards;
+	}
 
 	public Cards getCardById(int id) {
 		// TODO Auto-generated method stub
