@@ -1,6 +1,6 @@
 import Home from './components/Home'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Add from './components/Add';
+// import Add from './components/Add';
 import Chooser from './components/Chooser';
 import Pick from './components/Pick';
 
@@ -13,7 +13,7 @@ function App () {
           <Route path='/play' element={<Home tester={true}></Home>}></Route>
           <Route path='/study' element={<Home tester={false}></Home>}></Route>
 
-          <Route path='/30roundsencodedpassword' element={<Add/>}></Route>
+          {/* <Route path='/30roundsencodedpassword' element={<Add/>}></Route> */}
           <Route path='/picker' element={<Pick/>}></Route>
 
           
