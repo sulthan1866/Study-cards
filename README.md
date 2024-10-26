@@ -12,6 +12,10 @@ StudyCards is a web application designed to help users learn and test their know
 ### 2. Play Mode
 - Test mode where users' performance is evaluated
 
+### 3. Picker Mode
+- View all cards at once.
+- Users can pick any card at random, offering greater flexibility in how they study and focus on specific topics.
+
 #### Key Rules (in Play Mode):
 - Once a user views the answer to a question, they cannot change their choice
 - Navigation is restricted: users cannot return to previous questions
@@ -62,3 +66,11 @@ SELECT setval('cards_id_seq', (SELECT COALESCE(MAX(id), 1) FROM cards));
 ## Option Shuffling
 
 To enhance the learning experience and prevent memorization based on option order, the application now shuffles the options every time a question is viewed. This applies to both Study Mode and Play Mode, ensuring that users focus on the content of the options rather than their positions.
+
+## Demo videos
+
+#### Check these Linked in posts for demo videos
+
+1)https://www.linkedin.com/posts/sulthan1866_studycards-webapp-flashcards-activity-7245440226494480384-tEor?utm_source=share&utm_medium=member_desktop
+
+2)https://www.linkedin.com/posts/sulthan1866_studycards-webapp-flashcards-activity-7252755611296124928-9z60?utm_source=share&utm_medium=member_desktop
