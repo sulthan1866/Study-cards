@@ -6,9 +6,9 @@ function Chooser() {
 
   return (
     <>
-      <div className="container col-4">
+      <div className="container col-lg-4 col-md-6 col-sm-10 col-11">
         <div className="row">
-          <div className="display-4 d-flex justify-content-center m-5">
+          <div className="display-4 d-flex m-5">
             Choose a mode
           </div>
         </div>
@@ -20,7 +20,7 @@ function Chooser() {
                   <button
                     onMouseEnter={() => setHover("play")}
                     onMouseLeave={() => setHover(null)}
-                    className="btn btn-primary"
+                    className="btn btn-primary m-1"
                   >
                     Play
                   </button>
@@ -32,7 +32,7 @@ function Chooser() {
                   <button
                     onMouseEnter={() => setHover("study")}
                     onMouseLeave={() => setHover(null)}
-                    className="btn btn-primary"
+                    className="btn btn-primary m-1"
                   >
                     Study
                   </button>
@@ -44,7 +44,7 @@ function Chooser() {
                   <button
                     onMouseEnter={() => setHover("pick")}
                     onMouseLeave={() => setHover(null)}
-                    className="btn btn-primary"
+                    className="btn btn-primary m-1"
                   >
                     Picker
                   </button>

@@ -48,7 +48,8 @@ function PickCard({
 
   const fullCard: React.CSSProperties = {
     cursor: "default",
-    height: selected ? 450 : 400,
+    height: selected ? 450 : "250%",
+    marginBottom:"50%",
     width: selected ? 400 : "auto",
     position: selected ? "absolute" : "static",
   };

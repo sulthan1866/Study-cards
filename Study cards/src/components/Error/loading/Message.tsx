@@ -9,7 +9,7 @@ function Message({ children }: Props) {
   };
 
   return (
-    <div className="container col-lg-4 col-sm-8 col-9">
+    <div className="container col-lg-4 col-md-6 col-sm-10 col-11">
       {
         <>
           <div className="row display-5 d-flex justify-content-center m-1 mb-1"></div>

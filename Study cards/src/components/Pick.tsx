@@ -69,7 +69,7 @@ function Pick() {
       <header className="sticky-top">
         <div className="p-2 mt-3 ps-3 bg-dark card border-5 border-light">
           <div className="row">
-            <h1 id="heading" className="col-10 text-light bg-dark">
+            <h1 id="heading" className="col-lg-10 col-md-8 col-sm-6 col-6 text-light bg-dark">
               {mess
                 ? `${mess}  Restart ? - > `
                 : `MARKS = ${marks}/${datas.length}`}
@@ -85,7 +85,7 @@ function Pick() {
           </div>
         </div>
         <div className="justify-content-center row">
-        <div style={{position:"absolute"}} className="col-4">
+        <div style={{position:"absolute"}} className="col-lg-4 col-md-6 col-sm-10 col-11">
           <div className="toast bg-danger text-light ps-2" id="toast"><h5>Another Question is being attended</h5></div>
         </div>
       </div>

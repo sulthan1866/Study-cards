@@ -36,7 +36,7 @@ function Card({
     cursor: "default",
     height: 450,
 
-    width: 400,
+    width:"auto",
   };
 
   const flip: React.CSSProperties = {
