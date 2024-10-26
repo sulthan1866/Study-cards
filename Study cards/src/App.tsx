@@ -5,7 +5,7 @@ import Add from './components/Add';
 import Chooser from './components/Chooser';
 import Pick from './components/Pick';
 
-const App :React.FC=()=> {
+function App () {
   return (
     <div>
       <Router>
