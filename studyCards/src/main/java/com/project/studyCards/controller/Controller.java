@@ -22,26 +22,26 @@ public class Controller {
     @Autowired
     Service service;
 
-    @GetMapping("/cards")
-    public ResponseEntity<List<Cards>> getCards(){
-        List<Cards> cardsList=service.getCards();
+    @GetMapping("/{genre}/cards")
+    public ResponseEntity<List<Cards>> getCards(@PathVariable String genre){
+        List<Cards> cardsList=service.getCards(genre);
 
         if(cardsList==null)return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         return new ResponseEntity<>(cardsList, HttpStatus.OK);
     }
     
-    @GetMapping("/picker-cards")
-    public ResponseEntity<List<Cards>> getShuffledCards(){
-    	List<Cards> cards = service.getShuffledCards();
+    @GetMapping("/{genre}/picker-cards")
+    public ResponseEntity<List<Cards>> getShuffledCards(@PathVariable String genre){
+    	List<Cards> cards = service.getShuffledCards(genre);
     	if(cards==null)return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     	
     	return new ResponseEntity<>(cards,HttpStatus.OK);
     }
     
-    @GetMapping("cards/{id}")
-    public ResponseEntity<Cards> getCardById(@PathVariable int id){
-    	Cards card = service.getCardById(id);
+    @GetMapping("/{genre}/cards/{id}")
+    public ResponseEntity<Cards> getCardById(@PathVariable int id,@PathVariable String genre){
+    	Cards card = service.getCardById(id,genre);
     	if(card==null)return new ResponseEntity<>( HttpStatus.NOT_FOUND);
     	
     	return new ResponseEntity<>(card,HttpStatus.OK);

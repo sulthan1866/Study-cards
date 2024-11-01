@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import PickCard from "./PickCard";
 import PickMess from "./Error/loading/PickMess";
+
+interface Props{
+  genre:string;
+}
+
 interface Cards {
   id: number;
   qtype: string;
@@ -10,7 +15,7 @@ interface Cards {
   correctOption: string;
 }
 
-function Pick() {
+function Pick({genre}:Props) {
   const [datas, setDatas] = useState<Cards[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +25,7 @@ function Pick() {
   const [qAttened, setQAttended] = useState<number>(0);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_CARD_DETAILS}/picker-cards`)
+    fetch(`${import.meta.env.VITE_CARD_DETAILS}/${genre}/picker-cards`)
       .then((response) => {
         if (!response.ok) {
           setError(response.statusText);
@@ -35,7 +40,7 @@ function Pick() {
         setLoading(false);
         setError(error);
       });
-  },[]);
+  },[genre]);
 
   if (error != null) return <PickMess>{error + ""}</PickMess>;
   if (loading) return <PickMess>Loading</PickMess>;
