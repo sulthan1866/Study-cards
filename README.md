@@ -16,6 +16,11 @@ StudyCards is a web application designed to help users learn and test their know
 - View all cards at once.
 - Users can pick any card at random, offering greater flexibility in how they study and focus on specific topics.
 
+### 4. Genres
+- "DSA" ➔ "Data Structures & Algorithms"
+- "AI" ➔ "Artificial Intelligence & Machine Learning"
+- "FUN" ➔ "Trivia & Fun Facts"
+
 #### Key Rules (in Play Mode):
 - Once a user views the answer to a question, they cannot change their choice
 - Navigation is restricted: users cannot return to previous questions
