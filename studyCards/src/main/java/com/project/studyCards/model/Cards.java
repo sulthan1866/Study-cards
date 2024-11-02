@@ -20,6 +20,7 @@ public class Cards {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String genre;
     private String qtype;
     private String question;
     @Column(columnDefinition="TEXT")
@@ -31,7 +32,9 @@ public class Cards {
     public int getId() {
     	return id;
     }
-    
+    public String getGenre() {
+    	return this.genre;
+    }
     public String getQtype() {
     	return this.qtype;
     }

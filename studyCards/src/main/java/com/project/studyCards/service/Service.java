@@ -16,21 +16,21 @@ public class Service {
 
    
 
-    public List<Cards> getCards() {
-       return repo.findAll();
+    public List<Cards> getCards(String genre) {
+       return repo.findByGenre(genre);
     }
 
-    public List<Cards> getShuffledCards() {
-		// TODO Auto-generated method stub
-		List<Cards> cards= this.getCards();
+    public List<Cards> getShuffledCards(String genere) {
+
+		List<Cards> cards= this.getCards(genere);
 		Collections.shuffle(cards,new Random());
 		return cards;
 	}
 
-	public Cards getCardById(int id) {
-		// TODO Auto-generated method stub
-		
-		Cards card= repo.findById(id).orElse(null);
+	public Cards getCardById(int id,String genre) {
+
+		List<Cards> cards= repo.findByGenre(genre);
+		Cards card = cards.get(id-1);
 		String[] op = card.getOptions();
 		List<String> opList =Arrays.asList(op);
 		Collections.shuffle(opList);

@@ -4,6 +4,7 @@ import Message from "./Error/loading/Message";
 
 interface Props {
   tester: boolean;
+  genre:string;
 }
 
 interface Cards {
@@ -15,7 +16,7 @@ interface Cards {
   correctOption: string;
 }
 
-function Home({ tester }: Props) {
+function Home({ tester ,genre}: Props) {
   const [id, setId] = useState<number>(1);
   const [data, setData] = useState<Cards | null>(null);
   const [datas, setDatas] = useState<Cards[]>([]);
@@ -51,7 +52,7 @@ function Home({ tester }: Props) {
   }
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards/${id}`)
+    fetch(`${import.meta.env.VITE_CARD_DETAILS}/${genre}/cards/${id}`)
       .then((response) => {
         if (!response.ok) {
           setError(response.statusText);
@@ -68,10 +69,10 @@ function Home({ tester }: Props) {
         setError(error);
         setLoading(false);
       });
-  }, [id]);
+  }, [id,genre]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_CARD_DETAILS}/cards`)
+    fetch(`${import.meta.env.VITE_CARD_DETAILS}/${genre}/cards`)
       .then((response) => {
         if (!response.ok) {
           setError(response.statusText);
@@ -88,7 +89,7 @@ function Home({ tester }: Props) {
         setLoading(false);
         setError(error);
       });
-  }, []);
+  }, [genre]);
 
   if (loading) return <Message>Loading</Message>;
 
@@ -106,7 +107,7 @@ function Home({ tester }: Props) {
             <div className="d-flex justify-content-center">
               <div id="card" className="m-1 mb-5 mt-5">
                 <Card
-                  qno={data.id}
+                  qno={id}
                   question={data.question}
                   answer={data.answer}
                   options={data.options}
