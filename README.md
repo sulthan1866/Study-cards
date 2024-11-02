@@ -71,6 +71,8 @@ To enhance the learning experience and prevent memorization based on option orde
 
 #### Check these Linked in posts for demo videos
 
-1)https://www.linkedin.com/posts/sulthan1866_studycards-webapp-flashcards-activity-7245440226494480384-tEor?utm_source=share&utm_medium=member_desktop
+1)[Study and Play mode](https://www.linkedin.com/posts/sulthan1866_studycards-webapp-flashcards-activity-7245440226494480384-tEor?utm_source=share&utm_medium=member_desktop)
 
-2)https://www.linkedin.com/posts/sulthan1866_studycards-webapp-flashcards-activity-7252755611296124928-9z60?utm_source=share&utm_medium=member_desktop
+2)[Picker mode](https://www.linkedin.com/posts/sulthan1866_studycards-webapp-flashcards-activity-7252755611296124928-9z60?utm_source=share&utm_medium=member_desktop)
+
+### Check out the web app [Here](https://study-card.netlify.app)
