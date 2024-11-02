@@ -21,17 +21,16 @@ public class Service {
     }
 
     public List<Cards> getShuffledCards(String genere) {
-		// TODO Auto-generated method stub
+
 		List<Cards> cards= this.getCards(genere);
 		Collections.shuffle(cards,new Random());
 		return cards;
 	}
 
 	public Cards getCardById(int id,String genre) {
-		// TODO Auto-generated method stub
-		if(genre.equals("ai"))id+=12;
-		if(genre.equals("fun"))id+=24;
-		Cards card= repo.findByIdAndGenre(id,genre);
+
+		List<Cards> cards= repo.findByGenre(genre);
+		Cards card = cards.get(id-1);
 		String[] op = card.getOptions();
 		List<String> opList =Arrays.asList(op);
 		Collections.shuffle(opList);

@@ -12,6 +12,4 @@ import org.springframework.stereotype.Repository;
 public interface Repo extends JpaRepository<Cards,Integer> {
 
 	List<Cards> findByGenre(String genere);
-
-	Cards findByIdAndGenre(int id, String genre);
 }
