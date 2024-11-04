@@ -32,11 +32,11 @@ function Card({
     setOption(event.target.value);
   };
 
-  const nocurser: React.CSSProperties = {
-    cursor: "default",
+  const cardStyle: React.CSSProperties = {
+    cursor:"default",
     height: 450,
-
     width:"auto",
+    
   };
 
   const flip: React.CSSProperties = {
@@ -84,7 +84,7 @@ function Card({
 
   return (
     <div
-      style={{ ...nocurser, ...flip }}
+      style={{ ...cardStyle, ...flip }}
       className={"card bg-dark p-lg-3 p-sm-1 p-1 card-deck"}
       onDoubleClick={() => {
         onClick();
@@ -152,7 +152,7 @@ function Card({
             </li>
           </ul>
         )}
-        <p id="mess">
+        <p id="mess" style={{"visibility":(qno==0)?"hidden":"visible"}}>
           {tester
             ? qno == 1 && !value
               ? mess

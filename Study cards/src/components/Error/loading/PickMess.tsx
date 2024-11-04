@@ -10,6 +10,7 @@ function PickMess({ children }: Props) {
 
   const loading: React.CSSProperties = {
     animation: "lodin 2s infinite",
+    "cursor":"wait"
   };
 
   return (

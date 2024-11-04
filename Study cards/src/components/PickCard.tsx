@@ -37,6 +37,7 @@ function PickCard({
   const [correction, setCorrection] = useState<string>("");
   const [value, setValue] = useState<boolean>(false);
   const [selected, setSelected] = useState<boolean>(false);
+  const loading:boolean=qno==0;
 
   const cardId = "card" + qno.toString();
   const cardEle = document.getElementById(cardId) as Node;
@@ -47,7 +48,7 @@ function PickCard({
   };
 
   const fullCard: React.CSSProperties = {
-    cursor: "default",
+    cursor:(loading)?"wait": "default",
     height: selected ? 450 : "250%",
     marginBottom:"50%",
     width: selected ? 400 : "auto",
@@ -86,7 +87,7 @@ function PickCard({
         "card bg-dark p-lg-3 p-sm-1 p-1 card-deck border-5 border-secondary"
       }
       onClick={() => {
-        if (!atterning) {
+        if (!atterning && !loading) {
           setSelected(true);
           setAtterning(true);
         }else if(!selected){
