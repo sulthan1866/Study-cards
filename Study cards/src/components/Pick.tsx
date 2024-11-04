@@ -42,8 +42,8 @@ function Pick({genre}:Props) {
       });
   },[genre]);
 
-  if (error != null) return <PickMess>{error + ""}</PickMess>;
-  if (loading) return <PickMess>Loading</PickMess>;
+  if (error != null) return <PickMess>{error + " - Try reloading the page"}</PickMess>;
+  if (loading) return <PickMess>Loading - This may take 1 or 2 minutes</PickMess>;
 
   const showResult = () => {
     const messElement = document.getElementById("heading");

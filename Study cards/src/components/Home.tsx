@@ -91,9 +91,9 @@ function Home({ tester ,genre}: Props) {
       });
   }, [genre]);
 
-  if (loading) return <Message>Loading</Message>;
+  if (loading) return <Message waitMess="This may take 1 or 2 minutes">Loading</Message>;
 
-  if (error != null) return <Message>{error + ""}</Message>;
+  if (error != null) return <Message waitMess="Try reloading the page">{error + ""}</Message>;
 
   return (
     <div className="container col-lg-4 col-md-6 col-sm-10 col-11">

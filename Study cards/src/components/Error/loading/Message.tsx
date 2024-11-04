@@ -2,8 +2,9 @@ import Card from "../../Card";
 
 interface Props {
   children: string;
+  waitMess:string;
 }
-function Message({ children }: Props) {
+function Message({ children ,waitMess}: Props) {
   const onClick = () => {
     return;
   };
@@ -19,7 +20,7 @@ function Message({ children }: Props) {
               <div id="card" className="m-1 mb-5 mt-5">
                 <Card
                   qno={0}
-                  question={children}
+                  question={waitMess}
                   answer={""}
                   options={[children, children, children, children]}
                   correct_option={""}
