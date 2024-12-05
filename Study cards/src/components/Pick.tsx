@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import PickCard from "./PickCard";
 import PickMess from "./Error/loading/PickMess";
 
-interface Props{
-  genre:string;
+interface Props {
+  genre: string;
 }
 
 interface Cards {
@@ -15,7 +15,7 @@ interface Cards {
   correctOption: string;
 }
 
-function Pick({genre}:Props) {
+function Pick({ genre }: Props) {
   const [datas, setDatas] = useState<Cards[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,10 +40,11 @@ function Pick({genre}:Props) {
         setLoading(false);
         setError(error);
       });
-  },[genre]);
+  }, [genre]);
 
-  if (error != null) return <PickMess>{error + " - Try reloading the page"}</PickMess>;
-  if (loading) return <PickMess>Loading - This may take 1 or 2 minutes</PickMess>;
+  if (error != null)
+    return <PickMess>{error + " - Try reloading the page"}</PickMess>;
+  if (loading) return <PickMess>Loading - This may take few seconds</PickMess>;
 
   const showResult = () => {
     const messElement = document.getElementById("heading");
@@ -74,7 +75,10 @@ function Pick({genre}:Props) {
       <header className="sticky-top">
         <div className="p-2 mt-3 ps-3 bg-dark card border-5 border-light">
           <div className="row">
-            <h1 id="heading" className="col-lg-10 col-md-8 col-sm-6 col-6 text-light bg-dark">
+            <h1
+              id="heading"
+              className="col-lg-10 col-md-8 col-sm-6 col-6 text-light bg-dark"
+            >
               {mess
                 ? `${mess}  Restart ? - > `
                 : `MARKS = ${marks}/${datas.length}`}
@@ -90,12 +94,17 @@ function Pick({genre}:Props) {
           </div>
         </div>
         <div className="justify-content-center row">
-        <div style={{position:"absolute"}} className="col-lg-4 col-md-6 col-sm-10 col-11">
-          <div className="toast bg-danger text-light ps-2" id="toast"><h5>Another Question is being attended</h5></div>
+          <div
+            style={{ position: "absolute" }}
+            className="col-lg-4 col-md-6 col-sm-10 col-11"
+          >
+            <div className="toast bg-danger text-light ps-2" id="toast">
+              <h5>Another Question is being attended</h5>
+            </div>
+          </div>
         </div>
-      </div>
       </header>
-      
+
       <div className="row">
         {datas.map((Cards) => (
           <div

@@ -4,7 +4,7 @@ import Message from "./Error/loading/Message";
 
 interface Props {
   tester: boolean;
-  genre:string;
+  genre: string;
 }
 
 interface Cards {
@@ -16,7 +16,7 @@ interface Cards {
   correctOption: string;
 }
 
-function Home({ tester ,genre}: Props) {
+function Home({ tester, genre }: Props) {
   const [id, setId] = useState<number>(1);
   const [data, setData] = useState<Cards | null>(null);
   const [datas, setDatas] = useState<Cards[]>([]);
@@ -69,7 +69,7 @@ function Home({ tester ,genre}: Props) {
         setError(error);
         setLoading(false);
       });
-  }, [id,genre]);
+  }, [id, genre]);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_CARD_DETAILS}/${genre}/cards`)
@@ -91,9 +91,11 @@ function Home({ tester ,genre}: Props) {
       });
   }, [genre]);
 
-  if (loading) return <Message waitMess="This may take 1 or 2 minutes">Loading</Message>;
+  if (loading)
+    return <Message waitMess="This may few seconds">Loading</Message>;
 
-  if (error != null) return <Message waitMess="Try reloading the page">{error + ""}</Message>;
+  if (error != null)
+    return <Message waitMess="Try reloading the page">{error + ""}</Message>;
 
   return (
     <div className="container col-lg-4 col-md-6 col-sm-10 col-11">
